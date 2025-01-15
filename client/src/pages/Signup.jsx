@@ -1,28 +1,23 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import e from "express";
+// import e from "express";
 
 const Signup = () => {
   const [formData, setFormData] = useState({});
   const handleChange = (e) =>{
     setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-  const handleSubmit = async (e) => {
-    // Resume Here 2.09.04
-    
-    e.preventDefault();
-    try {
-      const res = await fetch('/api/auth/signup',{ 
-        method: ' POST',
-        header:{'Content-Type': 'application/json'},
-        body:JSON.stringify(formData),
-      });
-      const data = await res.json();
-    } catch (error){
 
-    }
+  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try{
+    const response = await fetch('')
+  } catch(error){
+
   }
+};
   return (
     <div className='min-h-screen mt-20' >
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5 ">
@@ -42,34 +37,22 @@ const Signup = () => {
 
         {/* right */}
         <div className="flex-1">
-          <form action="" className='flex flex-col gap-4' onSubmit={handleSubmit} >
-            <div className="">
+          <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
+            <div>
               <Label value=' Your Username '/>
-              <TextInput
-              type='text'
-              placeholder='Username'
-              id='newusername' onChange={handleChange}
-              
-              />
-                       
-            </div>
+              <TextInput type='text' placeholder='Username' id='username' onChange={handleChange} />      
+             </div>
+
             <div className="">
               <Label value=' Your Email '/>
-              <TextInput
-              type='email'
-              placeholder='coder@gmail.com'
-              id='email' onChange={handleChange}
-              />
-                       
+              <TextInput type='email' placeholder='coder@gmail.com' id='email' onChange={handleChange} />                       
             </div>
-            <div className="">
+
+            <div>
               <Label value=' Your Password '/>
-              <TextInput
-              type='password'
-              placeholder='Password'
-              id='password' onChange={handleChange}
-              />                       
+              <TextInput type='password' placeholder='Password' id='password' onChange={handleChange} />                       
             </div>
+
             <Button gradientDuoTone="redToYellow" type='submit' >Sign Up</Button>
           </form>
 
